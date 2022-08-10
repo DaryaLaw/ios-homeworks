@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B3F886728912DF400F225AA /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3F886628912DF400F225AA /* Profile.swift */; };
 		4B4EC44A288DAC060073AA4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4EC449288DAC060073AA4A /* AppDelegate.swift */; };
 		4B4EC44C288DAC060073AA4A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4EC44B288DAC060073AA4A /* SceneDelegate.swift */; };
 		4B4EC44E288DAC060073AA4A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4EC44D288DAC060073AA4A /* ViewController.swift */; };
@@ -15,11 +16,13 @@
 		4B4EC468288DAE880073AA4A /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4EC467288DAE880073AA4A /* Post.swift */; };
 		4B4EC46A288EA2190073AA4A /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4EC469288EA2190073AA4A /* FeedViewController.swift */; };
 		4B4EC46C288EA2440073AA4A /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4EC46B288EA2440073AA4A /* PostViewController.swift */; };
-		4B4EC46E288EA2650073AA4A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4EC46D288EA2650073AA4A /* ProfileViewController.swift */; };
 		4B4EC470288EA2860073AA4A /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4EC46F288EA2860073AA4A /* InfoViewController.swift */; };
+		4B4EC473288F110E0073AA4A /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4EC472288F110E0073AA4A /* ProfileHeaderView.swift */; };
+		4B4EC475288F11570073AA4A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4EC474288F11570073AA4A /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B3F886628912DF400F225AA /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		4B4EC446288DAC060073AA4A /* NavigateProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NavigateProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B4EC449288DAC060073AA4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4B4EC44B288DAC060073AA4A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -30,8 +33,9 @@
 		4B4EC467288DAE880073AA4A /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		4B4EC469288EA2190073AA4A /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		4B4EC46B288EA2440073AA4A /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
-		4B4EC46D288EA2650073AA4A /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		4B4EC46F288EA2860073AA4A /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		4B4EC472288F110E0073AA4A /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		4B4EC474288F11570073AA4A /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,11 +69,11 @@
 			isa = PBXGroup;
 			children = (
 				4B4EC449288DAC060073AA4A /* AppDelegate.swift */,
+				4B4EC471288F10AE0073AA4A /* Profile */,
 				4B4EC44B288DAC060073AA4A /* SceneDelegate.swift */,
 				4B4EC44D288DAC060073AA4A /* ViewController.swift */,
 				4B4EC469288EA2190073AA4A /* FeedViewController.swift */,
 				4B4EC46B288EA2440073AA4A /* PostViewController.swift */,
-				4B4EC46D288EA2650073AA4A /* ProfileViewController.swift */,
 				4B4EC46F288EA2860073AA4A /* InfoViewController.swift */,
 				4B4EC452288DAC080073AA4A /* Assets.xcassets */,
 				4B4EC454288DAC080073AA4A /* LaunchScreen.storyboard */,
@@ -77,6 +81,16 @@
 				4B4EC467288DAE880073AA4A /* Post.swift */,
 			);
 			path = NavigateProject;
+			sourceTree = "<group>";
+		};
+		4B4EC471288F10AE0073AA4A /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				4B4EC472288F110E0073AA4A /* ProfileHeaderView.swift */,
+				4B4EC474288F11570073AA4A /* ProfileViewController.swift */,
+				4B3F886628912DF400F225AA /* Profile.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,11 +165,13 @@
 			files = (
 				4B4EC46C288EA2440073AA4A /* PostViewController.swift in Sources */,
 				4B4EC46A288EA2190073AA4A /* FeedViewController.swift in Sources */,
+				4B4EC475288F11570073AA4A /* ProfileViewController.swift in Sources */,
 				4B4EC44E288DAC060073AA4A /* ViewController.swift in Sources */,
 				4B4EC44A288DAC060073AA4A /* AppDelegate.swift in Sources */,
+				4B4EC473288F110E0073AA4A /* ProfileHeaderView.swift in Sources */,
 				4B4EC470288EA2860073AA4A /* InfoViewController.swift in Sources */,
 				4B4EC468288DAE880073AA4A /* Post.swift in Sources */,
-				4B4EC46E288EA2650073AA4A /* ProfileViewController.swift in Sources */,
+				4B3F886728912DF400F225AA /* Profile.swift in Sources */,
 				4B4EC44C288DAC060073AA4A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
