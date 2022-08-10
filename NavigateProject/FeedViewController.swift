@@ -8,8 +8,6 @@
 import UIKit
 
 class FeedViewController: UIViewController {
-//Добавьте кнопку на FeedViewController и сделайте переход на экран поста. Контроллер должен показаться в стеке UINavigationController.
-//Создайте структуру Post со свойством title: String. Создайте объект типа Post в FeedViewController и передайте его в PostViewController.
     
     var post1 = Post(title: "The most important news of all time")
     private lazy var postButton: UIButton = {
