@@ -55,73 +55,56 @@ class ProfileHeaderView: UIView {
         button.layer.shadowOpacity = 0.7
         button.layer.shadowRadius = 4
         button.layer.cornerRadius = 4
+        button.addTarget(Any.self, action: #selector(buttonPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.setupView()
+        setupView()
     }
-    
     required init?(coder Decoder: NSCoder) {
         super.init(coder: Decoder)
     }
-    
+
     private func setupView() {
+        self.backgroundColor = .lightGray
         self.addSubview(self.catImageView)
         self.addSubview(self.catLabel)
         self.addSubview(self.listeningToMusicTextField)
         self.addSubview(self.showStatusButton)
-        let catImageViewConstraints = self.catImageViewConstraints()
-        let catLabelConstraints = self.catLabelConstraints()
-        let listeningToMusicTextFieldConstraints = self.listeningToMusicTextFieldConstraints()
-        let showStatusButtonConstraints = self.showStatusButtonConstraints()
-        
-        NSLayoutConstraint.activate(catImageViewConstraints + catLabelConstraints + listeningToMusicTextFieldConstraints + showStatusButtonConstraints)
-    }
+           
+        NSLayoutConstraint.activate([
+            catImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 16),
+            catImageView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            catImageView.heightAnchor.constraint(equalToConstant: 100),
+            catImageView.widthAnchor.constraint(equalToConstant: 100),
+                
+            catLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 27),
+            catLabel.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
+                
+            listeningToMusicTextField.bottomAnchor.constraint(equalTo: self.showStatusButton.topAnchor, constant: -34),
+            listeningToMusicTextField.heightAnchor.constraint(equalToConstant: 40),
+            listeningToMusicTextField.leadingAnchor.constraint(equalTo: self.catImageView.trailingAnchor, constant: 16),
+            listeningToMusicTextField.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+                
+            showStatusButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            showStatusButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            showStatusButton.topAnchor.constraint(equalTo: self.catImageView.bottomAnchor, constant: 16),
+            showStatusButton.heightAnchor.constraint(equalToConstant: 50)
+            ])
+        }
     
-    
-    private func catImageViewConstraints() -> [NSLayoutConstraint] {
-        let topAnchor = self.catImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 16)
-        let leadingAnchor = self.catImageView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16)
-        let heightAnchor = self.catImageView.heightAnchor.constraint(equalToConstant: 100)
-        let widthAnchor = self.catImageView.widthAnchor.constraint(equalToConstant: 100)
-        
-        return [topAnchor, leadingAnchor, heightAnchor, widthAnchor]
-    }
-    
-    private func catLabelConstraints() -> [NSLayoutConstraint] {
-        let topAnchor = self.catLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 27)
-        let centerXAnchor = self.catLabel.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor)
-        
-        return [topAnchor, centerXAnchor]
-    }
-    
-    private func listeningToMusicTextFieldConstraints() -> [NSLayoutConstraint] {
-        let bottomAnchor = self.listeningToMusicTextField.bottomAnchor.constraint(equalTo: self.showStatusButton.topAnchor, constant: -34)
-        let heightAnchor = self.listeningToMusicTextField.heightAnchor.constraint(equalToConstant: 40)
-        let leadingAnchor = self.listeningToMusicTextField.leadingAnchor.constraint(equalTo: self.catImageView.trailingAnchor, constant: 16)
-        let trailingAnchor = self.listeningToMusicTextField.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16)
-        
-        return [bottomAnchor, heightAnchor, leadingAnchor, trailingAnchor]
-    }
-    
-    private func showStatusButtonConstraints() -> [NSLayoutConstraint] {
-        let leadingAnchor = self.showStatusButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16)
-        let trailingAnchor = self.showStatusButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16)
-        let topAnchor = self.showStatusButton.topAnchor.constraint(equalTo: self.catImageView.bottomAnchor, constant: 16)
-        let heightAnchor = self.showStatusButton.heightAnchor.constraint(equalToConstant: 50)
-       
-        return [leadingAnchor, trailingAnchor, topAnchor, heightAnchor]
-    }
-    
-    func getText() -> String {
-        listeningToMusicTextField.text ?? ""
+
+    @objc private func buttonPressed() {
+        if let text = listeningToMusicTextField.text {
+            print(text)
+        }
     }
     
     func addOurTarget(target: Any?, action: Selector, ourFor: UIControl.Event) {
         showStatusButton.addTarget(target, action: action, for: ourFor)
     }
-    
+
 }

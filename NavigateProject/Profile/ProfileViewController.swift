@@ -33,7 +33,7 @@ class ProfileViewController: UIViewController {
     
 
     
-    private lazy var profile = Profile(name: "Profile", image: nil)
+    private var profile = Profile(name: "Profile", image: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,25 +41,16 @@ class ProfileViewController: UIViewController {
         self.view.addSubview(self.profileHeaderView)
         self.view.addSubview(self.changeTitleButton)
         self.title = profile.name
-        profileHeaderView.addOurTarget(target: Any.self, action: #selector(buttonPressed), ourFor: .touchUpInside)
+//        profileHeaderView.addOurTarget(target: Any.self, action: #selector(buttonPressed), ourFor: .touchUpInside)
         let profileHeaderViewContraints = self.profileHeaderViewContraints()
         let changeTitleButtonContraints = self.changeTitleButtonContraints()
         NSLayoutConstraint.activate(profileHeaderViewContraints + changeTitleButtonContraints)
-    }
-    
-    override func loadView() {
-        super.loadView()
     }
     
     @objc private func didTapButton() {
         let feedView = FeedViewController()
         feedView.modalPresentationStyle = .fullScreen
         self.present(feedView, animated: true)
-    }
-    
-    @objc private func buttonPressed() {
-        let text = profileHeaderView.getText()
-        print(text)
     }
     
     private func profileHeaderViewContraints() -> [NSLayoutConstraint] {
