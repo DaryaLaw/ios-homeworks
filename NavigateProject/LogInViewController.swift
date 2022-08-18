@@ -86,7 +86,6 @@ class LogInViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
         NotificationCenter.default.addObserver(self, selector: #selector(didShowKeyboard(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didHideKeyboard(_:)), name: UIResponder.keyboardDidHideNotification, object: nil)
-
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -99,8 +98,6 @@ class LogInViewController: UIViewController {
         
         navigationController?.pushViewController(vc, animated: true)
     }
-    
-
     
     private func setupView() {
         view.backgroundColor = .white
@@ -133,9 +130,7 @@ class LogInViewController: UIViewController {
             loginButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
-    
  
-    
     private func setupGesture() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         view.addGestureRecognizer(tapGesture)
