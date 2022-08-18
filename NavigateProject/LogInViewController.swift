@@ -106,29 +106,30 @@ class LogInViewController: UIViewController {
         view.backgroundColor = .white
         
         view.addSubview(scrollView)
-        scrollView.addSubview(self.vkImageView)
-        scrollView.addSubview(self.textFieldsStackView)
-        scrollView.addSubview(self.loginButton)
+        scrollView.addSubview(vkImageView)
+        scrollView.addSubview(textFieldsStackView)
+        scrollView.addSubview(loginButton)
         
         NSLayoutConstraint.activate([
-           scrollView.topAnchor.constraint(equalTo: self.view.topAnchor),
-           scrollView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
-           scrollView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
-           scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+           scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+           scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+           scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+           scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 
-           vkImageView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 120),
-           vkImageView.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor),
-            vkImageView.widthAnchor.constraint(equalToConstant: 100),
-            vkImageView.heightAnchor.constraint(equalToConstant: 100),
+           vkImageView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 120),
+           vkImageView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+           vkImageView.widthAnchor.constraint(equalToConstant: 100),
+           vkImageView.heightAnchor.constraint(equalToConstant: 100),
+           vkImageView.bottomAnchor.constraint(equalTo: textFieldsStackView.topAnchor, constant: -120),
 
-            textFieldsStackView.topAnchor.constraint(equalTo: self.vkImageView.bottomAnchor, constant: 120),
-            textFieldsStackView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 16),
-            textFieldsStackView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -16),
-            textFieldsStackView.heightAnchor.constraint(equalToConstant: 100),
+           textFieldsStackView.topAnchor.constraint(equalTo: vkImageView.bottomAnchor, constant: 120),
+           textFieldsStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+           textFieldsStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+           textFieldsStackView.heightAnchor.constraint(equalToConstant: 100),
 
-            loginButton.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 16),
-            loginButton.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -16),
-            loginButton.topAnchor.constraint(equalTo: self.textFieldsStackView.bottomAnchor, constant: 16),
+            loginButton.leadingAnchor.constraint(equalTo: textFieldsStackView.leadingAnchor),
+            loginButton.trailingAnchor.constraint(equalTo: textFieldsStackView.trailingAnchor),
+            loginButton.topAnchor.constraint(equalTo: textFieldsStackView.bottomAnchor, constant: 16),
             loginButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
@@ -152,12 +153,12 @@ class LogInViewController: UIViewController {
             ? loginButtonBottomPointY - keyboardOriginY + 16
             : 0
             
-            scrollView.contentOffset = CGPoint(x: 0, y: 100)
+            scrollView.contentOffset = CGPoint(x: 0, y: offset)
             }
 }
 
     @objc private func didHideKeyboard(_ notification: Notification) {
-       hideKeyboard()
+        hideKeyboard()
     }
 
     @objc private func hideKeyboard() {
