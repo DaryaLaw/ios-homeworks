@@ -8,7 +8,6 @@
 import UIKit
 
 class InfoViewController: UIViewController {
-//На InfoViewController создайте кнопку. При нажатии на неё должен показаться UIAlertController с заданным title, message и двумя UIAlertAction. При нажатии на UIAlertAction в консоль должно выводиться сообщение.
     
     private lazy var termsOfUseButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
