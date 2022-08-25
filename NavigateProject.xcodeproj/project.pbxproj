@@ -19,6 +19,7 @@
 		4B4EC473288F110E0073AA4A /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4EC472288F110E0073AA4A /* ProfileHeaderView.swift */; };
 		4B4EC475288F11570073AA4A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4EC474288F11570073AA4A /* ProfileViewController.swift */; };
 		4BBDF70028A65C0800D742E7 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBDF6FF28A65C0800D742E7 /* LogInViewController.swift */; };
+		4BBDF71528B3DA3100D742E7 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBDF71428B3DA3100D742E7 /* PostTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		4B4EC472288F110E0073AA4A /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		4B4EC474288F11570073AA4A /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		4BBDF6FF28A65C0800D742E7 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		4BBDF71428B3DA3100D742E7 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +80,6 @@
 				4B4EC452288DAC080073AA4A /* Assets.xcassets */,
 				4B4EC454288DAC080073AA4A /* LaunchScreen.storyboard */,
 				4B4EC457288DAC080073AA4A /* Info.plist */,
-				4B4EC467288DAE880073AA4A /* Post.swift */,
 			);
 			path = NavigateProject;
 			sourceTree = "<group>";
@@ -88,6 +89,8 @@
 			children = (
 				4B4EC472288F110E0073AA4A /* ProfileHeaderView.swift */,
 				4B4EC474288F11570073AA4A /* ProfileViewController.swift */,
+				4BBDF71428B3DA3100D742E7 /* PostTableViewCell.swift */,
+				4B4EC467288DAE880073AA4A /* Post.swift */,
 				4B3F886628912DF400F225AA /* Profile.swift */,
 			);
 			path = Profile;
@@ -163,6 +166,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BBDF71528B3DA3100D742E7 /* PostTableViewCell.swift in Sources */,
 				4B4EC46C288EA2440073AA4A /* PostViewController.swift in Sources */,
 				4B4EC46A288EA2190073AA4A /* FeedViewController.swift in Sources */,
 				4B4EC475288F11570073AA4A /* ProfileViewController.swift in Sources */,

@@ -10,65 +10,74 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    private lazy var profileHeaderView: ProfileHeaderView = {
-        let view = ProfileHeaderView()
-        view.backgroundColor = .white
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    private var viewModel: [Post] = [
+        Post(author: "@Lis", image: "Post1", description: "Самые лучшие друзья на свете", likes: 125, views: 146),
+        Post(author: "@Elvis", image: "Post2", description: "Вместе уютнее", likes: 102, views: 198),
+        Post(author: "@Lis", image: "Post3", description: "Поваляться всегда в радость", likes: 127, views: 168),
+        Post(author: "@Elvis", image: "Post4", description: "Самые элегантнае коты", likes: 156, views: 201)]
     
-    private lazy var changeTitleButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Change title", for: .normal)
-        button.setTitleColor(.white , for: .normal)
-        button.backgroundColor = .blue
-        button.layer.shadowOffset = CGSize(width: 4, height: 4)
-        button.layer.shadowColor = CGColor(red: 0, green: 0, blue: 0, alpha: 1)
-        button.layer.shadowOpacity = 0.7
-        button.layer.shadowRadius = 4
-        button.layer.cornerRadius = 4
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(ProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: "HeaderView")
+        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "PostCell")
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
     }()
     
 
-    
-    private var profile = Profile(name: "Profile", image: nil)
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .lightGray
-        self.view.addSubview(self.profileHeaderView)
-        self.view.addSubview(self.changeTitleButton)
-        self.title = profile.name
-//        profileHeaderView.addOurTarget(target: Any.self, action: #selector(buttonPressed), ourFor: .touchUpInside)
-        let profileHeaderViewContraints = self.profileHeaderViewContraints()
-        let changeTitleButtonContraints = self.changeTitleButtonContraints()
-        NSLayoutConstraint.activate(profileHeaderViewContraints + changeTitleButtonContraints)
+        setupNavigationBar()
+        setupView()
     }
-    
-    @objc private func didTapButton() {
-        let feedView = FeedViewController()
-        feedView.modalPresentationStyle = .fullScreen
-        self.present(feedView, animated: true)
+
+    private func setupNavigationBar() {
+       navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.title = "Profile"
     }
-    
-    private func profileHeaderViewContraints() -> [NSLayoutConstraint] {
-        let topAnchor = NSLayoutConstraint(item: self.profileHeaderView, attribute: .top, relatedBy: .equal, toItem: self.view.safeAreaLayoutGuide, attribute: .top, multiplier: 1, constant: 0)
-        let leftAnchor = self.profileHeaderView.leftAnchor.constraint(equalTo: self.view.leftAnchor)
-        let rightAnchor = self.profileHeaderView.rightAnchor.constraint(equalTo: self.view.rightAnchor)
-        let heightAnchor = self.profileHeaderView.heightAnchor.constraint(equalToConstant: 220)
+
+    private func setupView() {
+        view.backgroundColor = .systemBackground
         
-        return [topAnchor, leftAnchor, rightAnchor, heightAnchor]
-    }
-    
-    private func changeTitleButtonContraints() -> [NSLayoutConstraint] {
-        let bottomAnchor = NSLayoutConstraint(item: self.changeTitleButton, attribute: .bottom, relatedBy: .equal, toItem: self.view.safeAreaLayoutGuide, attribute: .bottom, multiplier: 1, constant: 0)
-        let leftAnchor = self.changeTitleButton.leftAnchor.constraint(equalTo: self.view.leftAnchor)
-        let rightAnchor = self.changeTitleButton.rightAnchor.constraint(equalTo: self.view.rightAnchor)
-        let heightAnchor = self.changeTitleButton.heightAnchor.constraint(equalToConstant: 50)
+        view.addSubview(tableView)
         
-        return [bottomAnchor, leftAnchor, rightAnchor, heightAnchor]
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            tableView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+            tableView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+            tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+        ])
     }
 }
 
+extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "HeaderView") as? ProfileHeaderView {
+            return header
+        }
+        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        CGFloat(200.0)
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        viewModel.count
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as? PostTableViewCell {
+            cell.authorLabel.text = viewModel[indexPath.row].author
+            cell.postImageView.image = UIImage(named: viewModel[indexPath.row].image)
+            cell.descriptionLabel.text = viewModel[indexPath.row].description
+            cell.likesViewsLabel.text = "likes: \(viewModel[indexPath.row].likes) views: \(viewModel[indexPath.row].views)"
+            return cell
+        }
+            return UITableViewCell()
+    }
+}

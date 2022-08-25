@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileHeaderView: UIView {
+class ProfileHeaderView: UITableViewHeaderFooterView {
     
     private lazy var catLabel: UILabel = {
         let label = UILabel()
@@ -60,16 +60,18 @@ class ProfileHeaderView: UIView {
         return button
     }()
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(reuseIdentifier identifier: String?) {
+        super.init(reuseIdentifier: identifier)
         setupView()
     }
+    
     required init?(coder Decoder: NSCoder) {
         super.init(coder: Decoder)
+        setupView()
     }
 
     private func setupView() {
-        self.backgroundColor = .lightGray
+//        self.backgroundColor = .systemGray
         self.addSubview(self.catImageView)
         self.addSubview(self.catLabel)
         self.addSubview(self.listeningToMusicTextField)

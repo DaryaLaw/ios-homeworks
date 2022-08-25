@@ -9,7 +9,7 @@ import UIKit
 
 class FeedViewController: UIViewController {
     
-    var post1 = Post(title: "The most important news of all time")
+    var post = "The most important news of all time"
     private lazy var postButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
         button.backgroundColor = .systemRed

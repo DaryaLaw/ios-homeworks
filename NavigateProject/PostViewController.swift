@@ -20,7 +20,7 @@ class PostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .magenta
-        self.title = feedViewController.post1.title
+        self.title = feedViewController.post
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Legal documentation", style: .done, target: self, action: #selector(sendToInfoVC(sender:)))
         // Do any additional setup after loading the view.
     }
