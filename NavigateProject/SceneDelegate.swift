@@ -20,12 +20,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     self.window = UIWindow(windowScene: windowScene)
     let userFeedController = UINavigationController(rootViewController:
     FeedViewController())
-    let userProfileController = UINavigationController(rootViewController:
-    ProfileViewController())
+    //let userProfileController = UINavigationController(rootViewController: ProfileViewController())
+    let logInViewController = UINavigationController(rootViewController: LogInViewController())
     let tabBarController = UITabBarController()
-    tabBarController.viewControllers = [userFeedController, userProfileController]
+    tabBarController.viewControllers = [userFeedController, logInViewController]
     tabBarController.viewControllers?.enumerated().forEach {
-        $1.tabBarItem.title = $0 == 0 ? "Feed" : "Profile"
+        $1.tabBarItem.title = $0 == 0 ? "Feed" : "Login"
         $1.tabBarItem.image = $0 == 0
         ? UIImage(systemName: "list.bullet.rectangle.portrait")
         : UIImage(systemName: "pencil")

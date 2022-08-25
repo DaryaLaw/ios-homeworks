@@ -8,9 +8,6 @@
 import UIKit
 
 class PostViewController: UIViewController {
-//Добавьте PostViewController для показа выбранного поста. Поменяйте заголовок у контроллера и цвет главной view.
-    //В классе PostViewController выставьте title полученного поста в качестве заголовка контроллера.
-    //На PostViewController добавьте Bar Button Item в навигейшн бар. При нажатии на него должен открываться новый контроллер InfoViewController. Контроллер должен показаться модально.
     
     let feedViewController = FeedViewController()
     
@@ -23,7 +20,7 @@ class PostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .magenta
-        self.title = feedViewController.post1.title
+        self.title = feedViewController.post
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Legal documentation", style: .done, target: self, action: #selector(sendToInfoVC(sender:)))
         // Do any additional setup after loading the view.
     }
